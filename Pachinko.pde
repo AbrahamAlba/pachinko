@@ -54,6 +54,7 @@ float t;
 float t2;
 float t3;
 float t4;
+float t5;
 float r;
 float x;
 float y;
@@ -116,7 +117,7 @@ minim = new Minim(this);
   
 test = new Movie(this, "test1.mov");
 
-/*if(g1==1){
+
 boundaries.add(new Boundary(width/2,(height-5),width,10));
 
   boundaries.add(new Boundary(width/2-25,650,width-350,10));
@@ -135,8 +136,8 @@ boundaries.add(new Boundary(width/2,(height-5),width,10));
   boundaries.add(new Boundary(150,height/2,10,height));
   boundaries.add(new Boundary(750,height/2,10,height));
 }
-*/
-}
+
+
 
 void draw(){
 inicio();
@@ -527,14 +528,14 @@ void juego(){
   
   if (mousePressed && (mouseButton == LEFT)) {
     for (Box b: boxes) {
-     Vec2 wind = new Vec2(-30,-25);
+     Vec2 wind = new Vec2(-30,-40);
      b.applyForce(wind);
     }
     
   }
   if (mousePressed && (mouseButton == RIGHT)) {
     for (Box b: boxes) {
-     Vec2 wind = new Vec2(30, -25);
+     Vec2 wind = new Vec2(30, -40);
      b.applyForce(wind);
     }
   }
@@ -580,10 +581,20 @@ void juego(){
   boundaries.add(new Boundary(750,height/2,10,height));*/
   
     image(gameui,width/2,height/2);
+    t5++;
     
   text(score,20,40);
   text(mouseX,20,60);
   text(mouseY,60,60);
+  text(t5,20,80);
+  
+  if(t5>=10260){
+  fill(0);
+    noStroke();
+  rect(0,0,width,b2=b2+20);
+  rect(0,900,width,0-(b2=b2+20));
+  beep.play();
+  }
   
       
       /*textSize(16);
